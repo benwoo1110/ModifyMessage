@@ -1,0 +1,24 @@
+# +----------------+
+# | Modify Message |
+# +----------------+
+
+# Place all the messages you want to replace here.
+# Some examples has been provided for you.
+messages:
+  # This is for '/mm testmessage' command
+  test:
+    matches: 'This is a test message.'
+    replace: 'Sent a test message!'
+
+  testJoin:
+    matches: 'Benji_0224 joined the game'
+    replace: |-
+      &cWelcome to the server, Benji_0224!
+      &#197242Hope you are doing well!
+
+  # Simple example for a join message
+  exampleJoin:
+    matches: '{0} joined the game'
+    replace: |-
+      Welcome to the server, {0}!
+      Hope you are doing well!

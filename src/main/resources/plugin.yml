@@ -1,0 +1,7 @@
+name: ModifyMessage
+version: ${project.version}
+main: dev.benergy10.modifymessage.ModifyMessage
+api-version: 1.16
+depend: [ ProtocolLib ]
+authors: [ benwoo1110 ]
+description: Modify any message sent to players!
