@@ -12,8 +12,6 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
 
-import java.util.List;
-
 public class MessagePacketListener extends PacketAdapter {
 
     private final ModifyMessage plugin;
