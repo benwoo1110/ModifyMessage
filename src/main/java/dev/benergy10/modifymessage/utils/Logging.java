@@ -1,4 +1,4 @@
-package dev.benergy10.modifymessage;
+package dev.benergy10.modifymessage.utils;
 
 import org.bukkit.plugin.Plugin;
 

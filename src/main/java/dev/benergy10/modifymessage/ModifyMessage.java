@@ -2,6 +2,9 @@ package dev.benergy10.modifymessage;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
+import dev.benergy10.modifymessage.messages.Message;
+import dev.benergy10.modifymessage.messages.MessageMap;
+import dev.benergy10.modifymessage.utils.Logging;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,7 +19,7 @@ public final class ModifyMessage extends JavaPlugin {
     @Override
     public void onEnable() {
         Logging.setup(this);
-        Logging.doDebugLog(true);
+        Logging.doDebugLog(false);
 
         this.messageMap = new MessageMap(this);
         loadConfig();
@@ -35,18 +38,21 @@ public final class ModifyMessage extends JavaPlugin {
         ConfigurationSection messageSection = configuration.getConfigurationSection("messages");
         if (messageSection == null) {
             Logging.severe("Error getting messages from config.yml.");
-        } else {
-            for (String messageKey : messageSection.getKeys(false)) {
-                Message newMessage = new Message(
-                        this,
-                        messageKey,
-                        messageSection.getString(messageKey + ".matches"),
-                        messageSection.getString(messageKey + ".replace")
-                );
-                this.messageMap.addMessage(newMessage);
-                Logging.debug(String.valueOf(newMessage));
-            }
+            return;
         }
+
+        for (String messageKey : messageSection.getKeys(false)) {
+            Message newMessage = new Message(
+                    this,
+                    messageKey,
+                    messageSection.getString(messageKey + ".matches"),
+                    messageSection.getString(messageKey + ".replace")
+            );
+            this.messageMap.addMessage(newMessage);
+            Logging.debug(String.valueOf(newMessage));
+        }
+
+        Logging.debug(String.valueOf(this.messageMap));
     }
 
     @Override

@@ -1,5 +1,6 @@
-package dev.benergy10.modifymessage;
+package dev.benergy10.modifymessage.messages;
 
+import dev.benergy10.modifymessage.ModifyMessage;
 import net.md_5.bungee.api.ChatColor;
 
 import java.util.regex.Matcher;

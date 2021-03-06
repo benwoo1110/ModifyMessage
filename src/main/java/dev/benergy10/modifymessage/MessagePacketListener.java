@@ -6,8 +6,13 @@ import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.reflect.StructureModifier;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
+import dev.benergy10.modifymessage.messages.Message;
+import dev.benergy10.modifymessage.utils.Logging;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
+
+import java.util.List;
 
 public class MessagePacketListener extends PacketAdapter {
 
@@ -27,7 +32,13 @@ public class MessagePacketListener extends PacketAdapter {
         StructureModifier<WrappedChatComponent> components = event.getPacket().getChatComponents();
         int index = 0;
         for (WrappedChatComponent chatComponent : components.getValues()) {
-            TextComponent textComponent = new TextComponent(ComponentSerializer.parse(chatComponent.getJson()));
+            if (chatComponent == null) {
+                continue;
+            }
+            BaseComponent[] baseComponents = ComponentSerializer.parse(chatComponent.getJson());
+            TextComponent textComponent = new TextComponent(baseComponents);
+            Logging.debug(chatComponent.getJson());
+            Logging.debug(textComponent.toPlainText());
 
             final Message message = this.plugin.getMessageMap().findMessage(textComponent.toPlainText());
             if (message == null) {
