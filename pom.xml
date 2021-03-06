@@ -6,12 +6,12 @@
 
     <groupId>dev.benergy10.modifymessage</groupId>
     <artifactId>ModifyMessage</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>ModifyMessage</name>
-
     <description>Modify any message sent to players!</description>
+
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
